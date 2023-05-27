@@ -1,5 +1,6 @@
 import pygame,sys
 from grid import Grid
+from blocks import *
 
 pygame.init()
 darkBlue = (44,44,127)
@@ -10,6 +11,9 @@ pygame.display.set_caption("Tetris")
 clock = pygame.time.Clock()
 
 gameGrid = Grid()
+
+block = TBlock()
+
 
 gameGrid.printGrid()
 
@@ -27,6 +31,7 @@ while True:
     # STEP: Draw
     screen.fill(darkBlue)
     gameGrid.draw(screen)
+    block.draw(screen)
 
     pygame.display.update()
     clock.tick(60)
