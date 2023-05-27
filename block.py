@@ -25,9 +25,18 @@ class Block:
             movedTiles.append(pos)
         return movedTiles
 
-
     def draw(self, screen):
         tiles = self.getCellPos()
         for tile in tiles:
             tileRect= pygame.Rect(tile.col * self.cellSize+1, tile.row * self.cellSize +1, self.cellSize -1, self.cellSize -1)
             pygame.draw.rect(screen, self.colors[self.id], tileRect)
+        
+    def rotate(self):
+        self.rotationState += 1
+        if self.rotationState == len(self.cells):
+            self.rotationState = 0
+    
+    def undoRotate(self):
+        self.rotationState -= 1
+        if self.rotationState <= 0:
+            self.rotationState = len(self.cells)-1

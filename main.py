@@ -1,6 +1,7 @@
 import pygame,sys
-from grid import Grid
-from blocks import *
+from game import Game
+
+
 
 pygame.init()
 darkBlue = (44,44,127)
@@ -10,12 +11,10 @@ pygame.display.set_caption("Tetris")
 
 clock = pygame.time.Clock()
 
-gameGrid = Grid()
+game = Game()
 
-block = TBlock()
-
-
-gameGrid.printGrid()
+GAME_UPDATE = pygame.USEREVENT
+pygame.time.set_timer(GAME_UPDATE,200)
 
 while True:
     # STEP: Check for input
@@ -23,15 +22,19 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                game.moveLeft()
+            if event.key == pygame.K_RIGHT:
+                game.moveRight()
+            if event.key == pygame.K_UP:
+                game.rotateBlock()
+        if event.type == GAME_UPDATE:
+            game.moveDown()
 
-
-
-    # STEP: Update postion 
 
     # STEP: Draw
     screen.fill(darkBlue)
-    gameGrid.draw(screen)
-    block.draw(screen)
-
+    game.draw(screen)
     pygame.display.update()
     clock.tick(60)

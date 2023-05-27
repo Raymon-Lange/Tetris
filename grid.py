@@ -24,5 +24,16 @@ class Grid:
                 self.cellSize -1, self.cellSize -1)
                 pygame.draw.rect(screen, self.colors[cellValue], cellRect)
 
+    def isInside(self, row, col):
+        if row >=0 and row < self.numRows and col >= 0 and col < self.numCols:
+            return True
+        return False
+    
+    def isEmpty(self, row, col):
+        if self.grid[row][col] == 0:
+            return True
+        return False
+        
+
 
 
