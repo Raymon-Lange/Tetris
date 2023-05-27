@@ -1,6 +1,7 @@
 import pygame,sys
 
 pygame.init()
+darkBlue = (44,44,127)
 
 screen = pygame.display.set_mode((300,600))
 pygame.display.set_caption("Tetris")
@@ -14,9 +15,12 @@ while True:
             pygame.quit()
             sys.exit()
 
-    pygame.display.update()
-    clock.tick(60)
+
 
     # STEP: Update postion 
 
     # STEP: Draw
+
+    screen.fill(darkBlue)
+    pygame.display.update()
+    clock.tick(60)
