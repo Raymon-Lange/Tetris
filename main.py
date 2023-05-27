@@ -22,14 +22,16 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-        if event.type == pygame.KEYDOWN:
+        if event.type == pygame.KEYDOWN and game.gameOver == False:
             if event.key == pygame.K_LEFT:
                 game.moveLeft()
             if event.key == pygame.K_RIGHT:
                 game.moveRight()
             if event.key == pygame.K_UP:
                 game.rotateBlock()
-        if event.type == GAME_UPDATE:
+            if event.key == pygame.K_DOWN:
+                game.moveDown()
+        if event.type == GAME_UPDATE and game.gameOver == False:
             game.moveDown()
 
 

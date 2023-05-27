@@ -9,6 +9,7 @@ class Game:
         self.blocks = [IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock()]
         self.currentBlock = self.getRandomBlock()
         self.nextBlock = self.getRandomBlock()
+        self.gameOver = False
 
     def getRandomBlock(self):
         if len(self.blocks) == 0:
@@ -47,7 +48,7 @@ class Game:
 
     def rotateBlock(self):
         self.currentBlock.rotate()
-        if self.blockInside() == False:
+        if self.blockInside() == False or self.blockFits() == False:
             self.currentBlock.undoRotate()
 
     def lockBlock(self):
@@ -56,6 +57,10 @@ class Game:
             self.grid.grid[position.row][position.col] = self.currentBlock.id
         self.currentBlock = self.nextBlock
         self.nextBlock = self.getRandomBlock()
+        self.grid.clearFullRows()
+
+        if self.blockFits() == False:
+            self.gameOver = True
 
     def blockFits(self):
         tiles = self.currentBlock.getCellPos()

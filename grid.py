@@ -34,6 +34,27 @@ class Grid:
             return True
         return False
         
+    def isRowFull(self, row):
+        for col in range(self.numCols):
+            if self.grid[row][col] == 0:
+                return False
+        return True
+        
+    def clearRow(self, row):
+         for col in range(self.numCols):
+            self.grid[row][col] = 0
 
+    def moveRowDown(self, row, numberRows):
+        for col in range(self.numCols):
+            self.grid[row + numberRows][col] = self.grid[row][col]
+            self.grid[row][col]
 
-
+    def clearFullRows(self):
+        completedRows = 0
+        for row in range(self.numRows-1, 0, -1):
+            if self.isRowFull(row) == True:
+                self.clearRow(row)
+                completedRows += 1
+            elif completedRows > 0:
+                self.moveRowDown(row, completedRows)
+        return completedRows
