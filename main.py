@@ -1,4 +1,5 @@
 import pygame,sys
+from grid import Grid
 
 pygame.init()
 darkBlue = (44,44,127)
@@ -7,6 +8,10 @@ screen = pygame.display.set_mode((300,600))
 pygame.display.set_caption("Tetris")
 
 clock = pygame.time.Clock()
+
+gameGrid = Grid()
+
+gameGrid.printGrid()
 
 while True:
     # STEP: Check for input
@@ -20,7 +25,8 @@ while True:
     # STEP: Update postion 
 
     # STEP: Draw
-
     screen.fill(darkBlue)
+    gameGrid.draw(screen)
+
     pygame.display.update()
     clock.tick(60)
