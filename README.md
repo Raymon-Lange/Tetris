@@ -1,9 +1,10 @@
-Certainly! Here's an updated version of the README file that includes instructions for installing `pygame-ce`:
 
 ```
 # Tetris
 
-This is a Tetris game implemented in Python.
+This is a Tetris game implemented in Python. The goal of the application is use the Gymnasium start learning how to build a AI agent with a focus on reinforcement learning. 
+
+Gymnasium is an open source Python library for developing and comparing reinforcement learning algorithms by providing a standard API to communicate between learning algorithms and environments.
 
 ## Installation
 
