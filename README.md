@@ -63,4 +63,4 @@ Contributions to this project are welcome. To contribute, follow these steps:
 This project is licensed under the [MIT License](LICENSE).
 ```
 
-Make sure to update the `requirements.txt` file with the necessary dependencies, including `pygame-ce`, in the Tetris repository.
+
